@@ -1,5 +1,11 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 function App() {
-  return <h1>Moviewnest</h1>;
+  const router = createBrowserRouter([
+    { path: '/', element: <div>Main Page</div> },
+    { path: '/movies', element: <div>Movies</div> },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
