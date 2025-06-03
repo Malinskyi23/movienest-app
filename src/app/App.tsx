@@ -8,13 +8,13 @@ import { FILMS_LIST, FILMS_TOP_LIST } from '@/shared/consts/constants';
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Layout } from './layouts/Layout';
+import { MainLayout } from './layouts/MainLayout';
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: <MainLayout />,
       children: [
         { path: '/', element: <FilmsPage /> },
         ...FILMS_TOP_LIST.map(item => ({
