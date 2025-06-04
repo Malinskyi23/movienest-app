@@ -9,7 +9,6 @@ export const MainLayout = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <LayoutHeader />
-
       <Layout>
         <LayoutSider />
         <Layout>

@@ -1,6 +1,6 @@
 import {
+  FILMS_COLLECTIONS_LIST,
   FILMS_LIST,
-  FILMS_TOP_LIST,
   iconComponents,
 } from '@/shared/consts/constants';
 import { Divider, Menu, type MenuProps } from 'antd';
@@ -29,7 +29,7 @@ export const Navigation = () => {
         theme="light"
         mode="inline"
         onClick={handler}
-        items={FILMS_TOP_LIST.map(item => ({
+        items={FILMS_COLLECTIONS_LIST.map(item => ({
           key: item.url,
           label: item.title,
           icon: <Icon iconName={item.icon as keyof typeof iconComponents} />,

@@ -14,6 +14,7 @@ export const LayoutContent = () => {
     background: colorBgContainer,
     borderRadius: borderRadiusLG,
   };
+
   return (
     <Layout.Content style={styles}>
       <Outlet />

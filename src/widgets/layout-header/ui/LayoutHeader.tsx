@@ -1,5 +1,5 @@
 import { Layout, Typography } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const LayoutHeader = () => {
   const styles = {
@@ -10,11 +10,9 @@ export const LayoutHeader = () => {
 
   return (
     <Layout.Header style={styles}>
-      {/* <Typography> */}
       <Typography.Title level={3} style={{ color: '#ffffff', margin: 0 }}>
         movienest
       </Typography.Title>
-      {/* </Typography> */}
     </Layout.Header>
   );
 };

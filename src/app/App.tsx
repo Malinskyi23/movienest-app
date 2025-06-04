@@ -1,10 +1,10 @@
 import { FilmDetailsPage } from '@/pages/film-details/ui/Page';
+import { FilmsCollectionsPage } from '@/pages/films-collections';
 import { FilmsListPage } from '@/pages/films-list';
-import { FilmsListTopPage } from '@/pages/films-list-top';
 import { FilmsPage } from '@/pages/films/ui/Page';
 import { StaffListPage } from '@/pages/staff-list/ui/Page';
 import { StaffMemberDetailsPage } from '@/pages/staff-member-details/ui/Page';
-import { FILMS_LIST, FILMS_TOP_LIST } from '@/shared/consts/constants';
+import { FILMS_COLLECTIONS_LIST, FILMS_LIST } from '@/shared/consts/constants';
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -17,9 +17,9 @@ function App() {
       element: <MainLayout />,
       children: [
         { path: '/', element: <FilmsPage /> },
-        ...FILMS_TOP_LIST.map(item => ({
+        ...FILMS_COLLECTIONS_LIST.map(item => ({
           path: item.url,
-          element: <FilmsListTopPage />,
+          element: <FilmsCollectionsPage />,
         })),
         ...FILMS_LIST.map(item => ({
           path: item.url,

@@ -1,0 +1,7 @@
+import { baseApi } from '@/shared/api';
+import { combineReducers } from '@reduxjs/toolkit';
+
+export const rootReducer = combineReducers({
+  // [emailTestsSlice.name]: emailTestsSlice.reducer,
+  [baseApi.reducerPath]: baseApi.reducer,
+});
