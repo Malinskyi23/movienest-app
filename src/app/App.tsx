@@ -1,6 +1,6 @@
 import { FilmDetailsPage } from '@/pages/film-details/ui/Page';
 import { FilmsCollectionsPage } from '@/pages/films-collections';
-import { FilmsListPage } from '@/pages/films-list';
+import { FilmsListPage } from '@/pages/films-list RENAME';
 import { FilmsPage } from '@/pages/films/ui/Page';
 import { StaffListPage } from '@/pages/staff-list/ui/Page';
 import { StaffMemberDetailsPage } from '@/pages/staff-member-details/ui/Page';
@@ -16,7 +16,7 @@ function App() {
       path: '/',
       element: <MainLayout />,
       children: [
-        { path: '/', element: <FilmsPage /> },
+        // { path: '/', element: <FilmsPage /> },
         ...FILMS_COLLECTIONS_LIST.map(item => ({
           path: item.url,
           element: <FilmsCollectionsPage />,
