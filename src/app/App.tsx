@@ -1,7 +1,5 @@
 import { FilmDetailsPage } from '@/pages/film-details/ui/Page';
 import { FilmsCollectionsPage } from '@/pages/films-collections';
-import { FilmsListPage } from '@/pages/films-list RENAME';
-import { FilmsPage } from '@/pages/films/ui/Page';
 import { StaffListPage } from '@/pages/staff-list/ui/Page';
 import { StaffMemberDetailsPage } from '@/pages/staff-member-details/ui/Page';
 import { FILMS_COLLECTIONS_LIST, FILMS_LIST } from '@/shared/consts/constants';
@@ -23,7 +21,7 @@ function App() {
         })),
         ...FILMS_LIST.map(item => ({
           path: item.url,
-          element: <FilmsListPage />,
+          element: <>Define a component for Film List</>,
         })),
         { path: '/films/:id', element: <FilmDetailsPage /> },
         { path: '/staff-list', element: <StaffListPage /> },

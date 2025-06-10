@@ -22,11 +22,11 @@ export const FilmsList: React.FC<FilmsListProps> = ({
   return (
     <Row gutter={[16, 16]}>
       {items.map(film => (
-        <Col key={film.kinopoiskId} span={4}>
+        <Col key={film.kinopoiskId} xs={24} sm={12} md={6} lg={4}>
           <FilmCard item={film} />
         </Col>
       ))}
-      <Col>
+      <Col span={24}>
         <FilmsLlistPagination
           total={total}
           current={current}

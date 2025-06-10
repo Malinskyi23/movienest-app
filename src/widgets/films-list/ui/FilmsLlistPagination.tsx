@@ -20,6 +20,7 @@ export const FilmsLlistPagination: React.FC<FilmsLlistPaginationProps> = ({
       current={current}
       pageSize={pageSize}
       onChange={onChange}
+      showSizeChanger={false}
     />
   );
 };
