@@ -4,8 +4,8 @@
 // We disable the ESLint rule here because this is the designated place
 // for importing and re-exporting the typed versions of hooks.
 /* eslint-disable @typescript-eslint/no-restricted-imports */
-import {RootState} from "@/app/store.ts"
-import {useSelector} from "react-redux"
+import type { RootState } from '@/app/store.ts';
+import { useSelector } from 'react-redux';
 
 // Use throughout your app instead of plain `useSelector`
-export const useAppSelector = useSelector.withTypes<RootState>()
+export const useAppSelector = useSelector.withTypes<RootState>();

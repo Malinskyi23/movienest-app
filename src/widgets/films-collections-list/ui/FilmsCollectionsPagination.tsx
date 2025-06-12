@@ -1,19 +1,16 @@
 import { Pagination } from 'antd';
 import React from 'react';
 
-interface FilmsLlistPaginationProps {
+interface FilmsCollectionsPaginationProps {
   total: number;
   current: number;
   pageSize: number;
   onChange: (page: number, pageSize: number) => void;
 }
 
-export const FilmsLlistPagination: React.FC<FilmsLlistPaginationProps> = ({
-  total,
-  current,
-  pageSize,
-  onChange,
-}) => {
+export const FilmsCollectionsPagination: React.FC<
+  FilmsCollectionsPaginationProps
+> = ({ total, current, pageSize, onChange }) => {
   return (
     <Pagination
       total={total}

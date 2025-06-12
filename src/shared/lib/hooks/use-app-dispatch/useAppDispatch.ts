@@ -4,8 +4,8 @@
 // We disable the ESLint rule here because this is the designated place
 // for importing and re-exporting the typed versions of hooks.
 /* eslint-disable @typescript-eslint/no-restricted-imports */
-import {useDispatch} from "react-redux"
-import {AppDispatch} from "@/app/store.ts";
+import type { AppDispatch } from '@/app/store.ts';
+import { useDispatch } from 'react-redux';
 
 // Use throughout your app instead of plain `useDispatch`
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();

@@ -1,8 +1,10 @@
+import { setType } from '@/pages/films-collections';
 import {
   FILMS_COLLECTIONS_LIST,
   FILMS_LIST,
   iconComponents,
 } from '@/shared/consts/constants';
+import { useAppDispatch } from '@/shared/lib/hooks';
 import { Divider, Menu, type MenuProps } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,9 +20,15 @@ const Icon: React.FC<IconProps> = ({ iconName }) => {
 
 export const Navigation = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handler: MenuProps['onClick'] = ({ key }) => {
-    if (key) navigate(key);
+    const type = FILMS_COLLECTIONS_LIST.find(item => item.url === key)?.type;
+    if (type) {
+      dispatch(setType(type));
+    }
+
+    navigate(key);
   };
 
   return (
