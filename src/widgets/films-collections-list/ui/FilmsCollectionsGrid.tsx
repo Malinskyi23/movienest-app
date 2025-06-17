@@ -12,7 +12,7 @@ export const FilmsCollectionsGrid: React.FC<FilmsCollectionsGridProps> = ({
   return (
     <Row gutter={[16, 16]}>
       {items.map(film => (
-        <Col key={film.kinopoiskId} xs={24} sm={12} md={8} lg={4}>
+        <Col key={film.kinopoiskId} xs={24} sm={12} md={6}>
           <FilmCard item={film} />
         </Col>
       ))}

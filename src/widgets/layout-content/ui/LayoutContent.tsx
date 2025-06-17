@@ -8,11 +8,13 @@ export const LayoutContent = () => {
   } = theme.useToken();
 
   const styles = {
-    margin: '24px 16px',
+    margin: '24px auto',
     padding: 24,
     minHeight: 280,
-    background: colorBgContainer,
-    borderRadius: borderRadiusLG,
+    maxWidth: 1200,
+    width: '100%',
+    // background: colorBgContainer,
+    // borderRadius: borderRadiusLG,
   };
 
   return (

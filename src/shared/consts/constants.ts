@@ -93,19 +93,19 @@ export const FILMS_COLLECTIONS_LIST = [
 
 export const FILMS_LIST = [
   {
-    title: 'Фильмы',
+    title: 'Films',
     icon: 'VideoCameraOutlined',
     url: '/films',
     type: 'FILM',
   },
   {
-    title: 'Сериалы',
+    title: 'Series',
     icon: 'BarsOutlined',
-    url: '/serials',
+    url: '/tv-series',
     type: 'TV_SERIES',
   },
   {
-    title: 'Мультфильмы',
+    title: 'Cartoons',
     icon: 'SmileOutlined',
     url: '/cartoons',
     type: 'FILM',

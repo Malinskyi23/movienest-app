@@ -1,8 +1,8 @@
 export { FilmsCollectionsPage } from './ui/Page.tsx';
 export {
-  filmsCollectionsSlice,
+  filmsCollectionsFiltersSlice,
   selectPage,
   selectType,
   setPage,
   setType,
-} from './model/filmsCollectionsSlice.ts';
+} from './model/filmsCollectionsFiltersSlice.ts';

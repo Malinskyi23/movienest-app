@@ -1,5 +1,5 @@
 import { selectPage, selectType, setPage } from '@/pages/films-collections';
-import { useGetFilmsQuery } from '@/shared/api/baseApi';
+import { useGetFilmCollectionsQuery } from '@/shared/api/baseApi';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { ErrorFallback, SkeletonGrid } from '@/shared/ui';
 import { type PaginationProps } from 'antd';
@@ -23,7 +23,7 @@ export const FilmsCollectionsList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetFilmsQuery({
+  } = useGetFilmCollectionsQuery({
     type,
     page,
   });

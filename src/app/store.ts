@@ -21,9 +21,9 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 // @ts-expect-error TODO: Add correct types for middleware, for now we use any
 const logger = store => next => action => {
-  // console.log('Dispatching action:', action);
+  console.log('Dispatching action:', action);
   const result = next(action);
-  // console.log('New state:', store.getState());
+  console.log('New state:', store.getState());
   return result;
 };
 

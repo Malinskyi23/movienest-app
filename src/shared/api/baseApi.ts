@@ -16,11 +16,49 @@ export const baseApi = createApi({
     },
   }),
   endpoints: builder => ({
-    getFilms: builder.query<any, { type: string; page: number }>({
+    getFilmCollections: builder.query<any, { type?: string; page: number }>({
       query: ({ type, page }) =>
         `/v2.2/films/collections?type=${type}&page=${page}`,
+    }),
+    getFilms: builder.query<
+      any,
+      {
+        countryId?: number;
+        genreId?: number;
+        order?: string;
+        type?: string;
+        yearFrom?: number;
+        yearTo?: number;
+        page: number;
+      }
+    >({
+      query: ({
+        // countries
+        countryId,
+        // genres,
+        genreId,
+        order = 'NUB_VOTE',
+        type = 'FILM',
+        yearFrom,
+        yearTo,
+        page,
+      }) => {
+        const params = new URLSearchParams();
+
+        if (countryId !== undefined)
+          params.append('countries', String(countryId));
+        if (genreId !== undefined) params.append('genres', String(genreId));
+        if (order) params.append('order', order);
+        if (type) params.append('type', type);
+        if (yearFrom !== undefined) params.append('yearFrom', String(yearFrom));
+        if (yearTo !== undefined) params.append('yearTo', String(yearTo));
+        params.append('page', String(page));
+
+        return `/v2.2/films?${params.toString()}`;
+      },
+      // `/v2.2/films?countries=${countryId}&genres=${genreId}&order=${order}&type=${type}&yearFrom=${yearFrom}&yearTo=${yearTo}&page=${page}`,
     }),
   }),
 });
 
-export const { useGetFilmsQuery } = baseApi;
+export const { useGetFilmCollectionsQuery, useGetFilmsQuery } = baseApi;
