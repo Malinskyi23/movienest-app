@@ -1,17 +1,30 @@
-import { Col, Flex, Row, Skeleton } from 'antd';
+import { Flex, Grid, Skeleton } from 'antd';
 import React from 'react';
 
-const COUNT = 8;
+const { useBreakpoint } = Grid;
 
-export const SkeletonGrid = () => (
-  <Row gutter={[16, 16]}>
-    {Array.from({ length: COUNT }).map((_, idx) => (
-      <Col key={idx} xs={24} sm={12} md={8} lg={4}>
-        <Flex vertical>
-          <Skeleton.Image active style={{ width: '100%', height: 200 }} />
-          <Skeleton active title={false} paragraph={{ rows: 2 }} />
-        </Flex>
-      </Col>
-    ))}
-  </Row>
-);
+const NUMBER_OF_ELEMENTS = 4;
+
+export const SkeletonGrid = () => {
+  const screens = useBreakpoint();
+  const isMobile = !screens.md; // anything below 768px is considered mobile
+
+  return (
+    <>
+      {Array.from({ length: NUMBER_OF_ELEMENTS }).map((_, idx) => (
+        <React.Fragment key={idx}>
+          <Flex vertical>
+            <Skeleton.Image
+              active
+              style={{
+                height: isMobile ? '520px' : '352px',
+                width: isMobile ? '100%' : '230px',
+              }}
+            />
+            <Skeleton active title={false} paragraph={{ rows: 2 }} />
+          </Flex>
+        </React.Fragment>
+      ))}
+    </>
+  );
+};

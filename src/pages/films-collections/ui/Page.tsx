@@ -1,4 +1,4 @@
-import { FILMS_COLLECTIONS_LIST } from '@/shared/consts/constants';
+import { FILM_COLLECTIONS_LIST } from '@/shared/consts/constants';
 import { FilmsCollectionsList } from '@/widgets/films-collections-list';
 import { Flex } from 'antd';
 import React from 'react';
@@ -9,7 +9,7 @@ import { PageHeader } from './PageHeader';
 export const FilmsCollectionsPage = () => {
   const location = useLocation();
 
-  const collection = FILMS_COLLECTIONS_LIST.find(
+  const collection = FILM_COLLECTIONS_LIST.find(
     item => item.url === location.pathname,
   );
 

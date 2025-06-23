@@ -1,13 +1,16 @@
 import { ErrorMessage } from '@/shared/ui';
 import AcroolCarousel, { AcroolSlideImage } from '@acrool/react-carousel';
-import { Flex, Typography } from 'antd';
+import { Flex, Grid, Typography } from 'antd';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useFilmsMainPageData } from '../lib/hooks/useFilmsMainPageData';
-import { FilmsMainSkeleton } from './FilmsMainSkeleton';
+import { useMediaContentLists } from '../../lib/hooks/useMediaContentLists';
 
-export const FilmsMainPage = () => {
+const { useBreakpoint } = Grid;
+
+export const CarouselMediaList = () => {
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
   const navigate = useNavigate();
   const {
     topPopularMoviesResponse,
@@ -17,10 +20,10 @@ export const FilmsMainPage = () => {
     cartoonsResponse,
     isFetching,
     error,
-  } = useFilmsMainPageData();
+  } = useMediaContentLists();
 
   // TODO: add skeleton
-  if (isFetching) return <FilmsMainSkeleton />;
+  if (isFetching) return <>Skeleton</>;
 
   // TODO: add error component
   if (error) return <ErrorMessage />;
@@ -32,6 +35,10 @@ export const FilmsMainPage = () => {
         key={row.id}
         imageUrl={row.posterUrlPreview}
         onClick={() => navigate(`/films/${row.kinopoiskId}`)}
+        style={{
+          height: isMobile ? '520px' : '352px',
+          width: isMobile ? '100%' : '230px',
+        }}
       />
     ));
 
@@ -53,12 +60,12 @@ export const FilmsMainPage = () => {
     },
     {
       title: 'Series',
-      url: '/films/tv-series',
+      url: '/tv-series',
       data: serialize(tvSeriesResponse.data.items),
     },
     {
       title: 'Cartoons',
-      url: '/films/cartoons',
+      url: '/cartoons',
       data: serialize(cartoonsResponse.data.items),
     },
   ];

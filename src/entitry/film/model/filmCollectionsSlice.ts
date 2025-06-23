@@ -17,18 +17,18 @@ export type CollectionType =
   | 'KIDS_ANIMATION_THEME'
   | 'POPULAR_SERIES';
 
-export interface FilmsCollectionsFiltersState {
+export interface FilmCollectionsState {
   type: CollectionType;
   page: number;
 }
 
-const initialState: FilmsCollectionsFiltersState = {
+const initialState: FilmCollectionsState = {
   type: 'TOP_POPULAR_MOVIES',
   page: 1,
 };
 
-export const filmsCollectionsFiltersSlice = createSlice({
-  name: 'filmsCollectionsFilters',
+export const filmCollectionsSlice = createSlice({
+  name: 'filmCollections',
   initialState,
   reducers: {
     setType: (state, action: PayloadAction<CollectionType>) => {
@@ -41,9 +41,7 @@ export const filmsCollectionsFiltersSlice = createSlice({
   },
 });
 
-export const { setPage, setType } = filmsCollectionsFiltersSlice.actions;
+export const { setPage, setType } = filmCollectionsSlice.actions;
 
-export const selectType = (state: RootState) =>
-  state.filmsCollectionsFilters.type;
-export const selectPage = (state: RootState) =>
-  state.filmsCollectionsFilters.page;
+export const selectType = (state: RootState) => state.filmCollections.type;
+export const selectPage = (state: RootState) => state.filmCollections.page;

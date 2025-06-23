@@ -19,13 +19,13 @@ import storage from 'redux-persist/lib/storage';
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-// @ts-expect-error TODO: Add correct types for middleware, for now we use any
-const logger = store => next => action => {
-  console.log('Dispatching action:', action);
-  const result = next(action);
-  console.log('New state:', store.getState());
-  return result;
-};
+// TODO: Add correct types for middleware, for now we use any
+// const logger = store => next => action => {
+//   console.log('Dispatching action:', action);
+//   const result = next(action);
+//   console.log('New state:', store.getState());
+//   return result;
+// };
 
 const persistConfig = {
   key: 'root',
@@ -41,9 +41,8 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    })
-      .concat(baseApi.middleware)
-      .concat(logger),
+    }).concat(baseApi.middleware),
+  // .concat(logger),
 });
 
 export const persistor = persistStore(store);

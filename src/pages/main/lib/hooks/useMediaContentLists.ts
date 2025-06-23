@@ -5,7 +5,7 @@ import {
 
 const GENRE_ID_CARTOONS = 18;
 
-export const useFilmsMainPageData = () => {
+export const useMediaContentLists = () => {
   // 'TOP_250_MOVIES' is a collection (... or top) type
 
   const topPopularMoviesResponse = useGetFilmCollectionsQuery({
@@ -42,7 +42,7 @@ export const useFilmsMainPageData = () => {
     countryId: 1,
     genreId: GENRE_ID_CARTOONS,
     order: 'NUM_VOTE',
-    type: 'TV_SERIES',
+    type: 'FILM',
     page: 1,
   });
 

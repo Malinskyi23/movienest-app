@@ -34,7 +34,7 @@ export const iconComponents = {
   SmileOutlined,
 };
 
-export const FILMS_COLLECTIONS_LIST = [
+export const FILM_COLLECTIONS_LIST = [
   {
     title: 'Top popular movies',
     icon: 'StarOutlined',

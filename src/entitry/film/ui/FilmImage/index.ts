@@ -1,0 +1,1 @@
+export { FilmImage } from './FilmImage';
