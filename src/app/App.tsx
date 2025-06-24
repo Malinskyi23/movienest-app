@@ -16,10 +16,6 @@ function App() {
       path: '/',
       element: <MainLayout />,
       children: [
-        // {
-        //   path: '/',
-        //   element: <Navigate to="/" replace />,
-        // },
         { path: '/', element: <MainPage /> },
         ...FILM_COLLECTIONS_LIST.map(item => ({
           path: item.url,

@@ -83,7 +83,17 @@ export const FilmsList = () => {
   let content: React.ReactNode;
   // isFetching;
   if (isLoading) {
-    content = <Spin />;
+    content = (
+      <Spin tip="Loading content..." size="large">
+        <div
+          style={{
+            padding: 50,
+            background: 'rgba(0, 0, 0, 0.05)',
+            borderRadius: 4,
+          }}
+        />
+      </Spin>
+    );
   } else if (isError) {
     content = <ErrorFallback error={error} />;
   } else if (isSuccess) {
@@ -95,7 +105,7 @@ export const FilmsList = () => {
 
     content = (
       <Flex vertical gap={16}>
-        <Spin spinning={isFetching}>
+        <Spin spinning={isFetching} tip="Fetching content...">
           <Card>
             <FilmFilterControls
               countryList={genresAndCountriesResult.countries}
