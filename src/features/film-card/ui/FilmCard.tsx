@@ -10,14 +10,14 @@ export const FilmCard = ({ item }: { item: any }) => {
     <Link to={`/films/${item.kinopoiskId}`}>
       <Card hoverable>
         <Flex vertical gap={8} align="center">
-          <Badge.Ribbon text={item.type}>
+          <Badge.Ribbon text={item.type ? item.type : 'no'}>
             <FilmImage src={item.posterUrlPreview} />
           </Badge.Ribbon>
 
           <Space direction="vertical" style={{ width: '100%' }}>
             <Typography.Text ellipsis>
               <Link to={`/films/${item.kinopoiskId}`}>
-                {item.nameEn ? item.nameEn : item.nameRu}{' '}
+                {item.nameEn ? item.nameEn : item.nameRu}
               </Link>
             </Typography.Text>
             {item.year &&

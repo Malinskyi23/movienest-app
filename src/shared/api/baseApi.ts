@@ -73,6 +73,7 @@ export interface FilmDetailsResponse {
 
 export type SequelOrPrequel = {
   filmId: number;
+  kinopoiskId?: number;
   nameRu: string;
   nameEn?: string;
   nameOriginal?: string;

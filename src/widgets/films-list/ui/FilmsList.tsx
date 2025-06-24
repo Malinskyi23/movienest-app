@@ -118,7 +118,7 @@ export const FilmsList = () => {
           </Card>
         </Spin>
 
-        <Spin spinning={isFetching}>
+        <Spin spinning={isFetching} tip="Fetching content...">
           <Row gutter={[16, 16]}>{renderedFilms}</Row>
         </Spin>
         {pagination}
