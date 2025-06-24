@@ -4,10 +4,15 @@ import {
   selectOrder,
   selectPage,
   selectType,
+  selectYear,
   setPage,
 } from '@/entitry/film/model/filmsSlice';
 import { FilmCard } from '@/features/film-card';
-import { useGetFilmsQuery } from '@/shared/api/baseApi';
+import { FilmFilterControls } from '@/features/film/FilmFilterControls';
+import {
+  useGetFilmGenresAndCountriesQuery,
+  useGetFilmsQuery,
+} from '@/shared/api/baseApi';
 import { FILMS_LIST } from '@/shared/consts/constants';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { ErrorFallback } from '@/shared/ui';
@@ -23,6 +28,7 @@ export const FilmsList = () => {
   const countryId = useAppSelector(selectCountryId);
   const genreId = useAppSelector(selectGenreId);
   const order = useAppSelector(selectOrder);
+  const year = useAppSelector(selectYear);
   const type = useAppSelector(selectType);
   const page = useAppSelector(selectPage);
 
@@ -31,7 +37,7 @@ export const FilmsList = () => {
     matchedFilm?.url === '/cartoons' ? GENRE_ID_CARTOONS : genreId;
 
   const {
-    data: films = [],
+    data: filmsResult = { total: 0, totalPages: 0, items: [] },
     isFetching,
     isLoading,
     isSuccess,
@@ -41,19 +47,23 @@ export const FilmsList = () => {
     countryId,
     genreId: genreIdCartoons,
     order,
+    year,
     type,
     page,
   });
+
+  const { data: genresAndCountriesResult = { genres: [], countries: [] } } =
+    useGetFilmGenresAndCountriesQuery();
 
   const handleChange: PaginationProps['onChange'] = page => {
     dispatch(setPage(page));
   };
 
-  const pageSize = Math.ceil(films.total / films.totalPages);
+  const pageSize = Math.ceil(filmsResult.total / filmsResult.totalPages);
 
   const pagination = (
     <Pagination
-      total={films.total}
+      total={filmsResult.total}
       defaultCurrent={page}
       current={page}
       pageSize={pageSize}
@@ -69,7 +79,7 @@ export const FilmsList = () => {
   } else if (isError) {
     content = <ErrorFallback error={error} />;
   } else if (isSuccess) {
-    const renderedFilms = films.items?.map(film => (
+    const renderedFilms = filmsResult.items?.map(film => (
       <Col key={film.kinopoiskId} xs={24} sm={12} md={8} lg={6}>
         <FilmCard item={film} />
       </Col>
@@ -77,6 +87,15 @@ export const FilmsList = () => {
 
     content = (
       <Flex vertical gap={16}>
+        <FilmFilterControls
+          countryList={genresAndCountriesResult.countries}
+          genreList={genresAndCountriesResult.genres}
+          genreId={genreId}
+          countryId={countryId}
+          year={year}
+          order={order}
+        />
+
         <Spin spinning={isFetching}>
           <Row gutter={[16, 16]}>{renderedFilms}</Row>
         </Spin>

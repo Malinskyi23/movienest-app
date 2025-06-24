@@ -1,9 +1,9 @@
-import { setType as collectionsSetType } from '@/entitry/film/model/filmCollectionsSlice';
+import { setType as collectionsSetType } from '@/entitry/film/model/collectionsAndTopsSlice';
 import { setType as filmsSetType } from '@/entitry/film/model/filmsSlice';
 import {
   FILM_COLLECTIONS_LIST,
   FILMS_LIST,
-  iconComponents,
+  ICON_COMPONENTS,
 } from '@/shared/consts/constants';
 import { useAppDispatch } from '@/shared/lib/hooks';
 import { Divider, Menu, type MenuProps } from 'antd';
@@ -11,11 +11,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type IconProps = {
-  iconName: keyof typeof iconComponents;
+  iconName: keyof typeof ICON_COMPONENTS;
 };
 
 const Icon: React.FC<IconProps> = ({ iconName }) => {
-  const IconComponent = iconComponents[iconName];
+  const IconComponent = ICON_COMPONENTS[iconName];
   return IconComponent ? <IconComponent /> : null;
 };
 
@@ -42,7 +42,7 @@ export const Navigation = () => {
         items={FILM_COLLECTIONS_LIST.map(item => ({
           key: item.url,
           label: item.title,
-          icon: <Icon iconName={item.icon as keyof typeof iconComponents} />,
+          icon: <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />,
         }))}
       />
       <Divider />
@@ -61,7 +61,7 @@ export const Navigation = () => {
         items={FILMS_LIST.map(item => ({
           key: item.url,
           label: item.title,
-          icon: <Icon iconName={item.icon as keyof typeof iconComponents} />,
+          icon: <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />,
         }))}
       />
     </>

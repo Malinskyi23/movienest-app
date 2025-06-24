@@ -2,7 +2,7 @@ import {
   selectPage,
   selectType,
   setPage,
-} from '@/entitry/film/model/filmCollectionsSlice';
+} from '@/entitry/film/model/collectionsAndTopsSlice';
 import { FilmCard } from '@/features/film-card';
 import { useGetFilmCollectionsQuery } from '@/shared/api/baseApi';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';

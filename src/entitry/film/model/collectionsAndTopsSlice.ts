@@ -1,7 +1,7 @@
 import type { RootState } from '@/app/store';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export type CollectionType =
+export type CollectionAndTopType =
   | 'TOP_POPULAR_ALL'
   | 'TOP_POPULAR_MOVIES'
   | 'TOP_250_TV_SHOWS'
@@ -17,21 +17,21 @@ export type CollectionType =
   | 'KIDS_ANIMATION_THEME'
   | 'POPULAR_SERIES';
 
-export interface FilmCollectionsState {
-  type: CollectionType;
+export interface CollectionsAndTopsState {
+  type: CollectionAndTopType;
   page: number;
 }
 
-const initialState: FilmCollectionsState = {
+const initialState: CollectionsAndTopsState = {
   type: 'TOP_POPULAR_MOVIES',
   page: 1,
 };
 
-export const filmCollectionsSlice = createSlice({
-  name: 'filmCollections',
+export const collectionsAndTopsSlice = createSlice({
+  name: 'collectionsAndTops',
   initialState,
   reducers: {
-    setType: (state, action: PayloadAction<CollectionType>) => {
+    setType: (state, action: PayloadAction<CollectionAndTopType>) => {
       state.type = action.payload;
       state.page = 1;
     },
@@ -41,7 +41,7 @@ export const filmCollectionsSlice = createSlice({
   },
 });
 
-export const { setPage, setType } = filmCollectionsSlice.actions;
+export const { setPage, setType } = collectionsAndTopsSlice.actions;
 
-export const selectType = (state: RootState) => state.filmCollections.type;
-export const selectPage = (state: RootState) => state.filmCollections.page;
+export const selectType = (state: RootState) => state.collectionsAndTops.type;
+export const selectPage = (state: RootState) => state.collectionsAndTops.page;

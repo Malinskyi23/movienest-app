@@ -1,4 +1,4 @@
 export { FilmImage } from './ui/FilmImage';
-
-export { filmCollectionsSlice } from './model/filmCollectionsSlice';
+export { genresAndCountriesSlice } from './model/genresAndCountriesSlice';
+export { collectionsAndTopsSlice } from './model/collectionsAndTopsSlice';
 export { filmsSlice } from './model/filmsSlice';

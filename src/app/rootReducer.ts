@@ -1,9 +1,14 @@
-import { filmCollectionsSlice, filmsSlice } from '@/entitry/film';
+import {
+  collectionsAndTopsSlice,
+  filmsSlice,
+  genresAndCountriesSlice,
+} from '@/entitry/film';
 import { baseApi } from '@/shared/api';
 import { combineReducers } from '@reduxjs/toolkit';
 
 export const rootReducer = combineReducers({
+  [collectionsAndTopsSlice.name]: collectionsAndTopsSlice.reducer,
   [filmsSlice.name]: filmsSlice.reducer,
-  [filmCollectionsSlice.name]: filmCollectionsSlice.reducer,
+  [genresAndCountriesSlice.name]: genresAndCountriesSlice.reducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });

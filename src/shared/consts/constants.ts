@@ -16,24 +16,6 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 
-export const iconComponents = {
-  AlertOutlined,
-  StarOutlined,
-  DesktopOutlined,
-  StarFilled,
-  HeartTwoTone,
-  BookOutlined,
-  UsergroupAddOutlined,
-  HeartOutlined,
-  FrownOutlined,
-  RadarChartOutlined,
-  VideoCameraOutlined,
-  PlaySquareOutlined,
-  BarsOutlined,
-  ApartmentOutlined,
-  SmileOutlined,
-};
-
 export const FILM_COLLECTIONS_LIST = [
   {
     title: 'Top popular movies',
@@ -111,3 +93,30 @@ export const FILMS_LIST = [
     type: 'FILM',
   },
 ];
+
+export const EXCLUDE_GENRES = [
+  '',
+  'новости',
+  'для взрослых',
+  'церемония',
+  'реальное ТВ',
+  'ток-шоу',
+];
+
+export const ICON_COMPONENTS = {
+  AlertOutlined,
+  StarOutlined,
+  DesktopOutlined,
+  StarFilled,
+  HeartTwoTone,
+  BookOutlined,
+  UsergroupAddOutlined,
+  HeartOutlined,
+  FrownOutlined,
+  RadarChartOutlined,
+  VideoCameraOutlined,
+  PlaySquareOutlined,
+  BarsOutlined,
+  ApartmentOutlined,
+  SmileOutlined,
+};
