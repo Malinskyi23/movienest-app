@@ -1,12 +1,15 @@
 import { setType as collectionsSetType } from '@/entitry/film/model/collectionsAndTopsSlice';
-import { setType as filmsSetType } from '@/entitry/film/model/filmsSlice';
+import {
+  setType as filmsSetType,
+  resetFilters,
+} from '@/entitry/film/model/filmsSlice';
 import {
   FILM_COLLECTIONS_LIST,
   FILMS_LIST,
   ICON_COMPONENTS,
 } from '@/shared/consts/constants';
 import { useAppDispatch } from '@/shared/lib/hooks';
-import { Divider, Menu, type MenuProps } from 'antd';
+import { Divider, Menu } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,6 +56,7 @@ export const Navigation = () => {
           const type = FILMS_LIST.find(item => item.url === key)?.type;
 
           if (type) {
+            dispatch(resetFilters());
             dispatch(filmsSetType(type));
           }
 
