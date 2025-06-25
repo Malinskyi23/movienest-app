@@ -1,3 +1,4 @@
+import { ScrollToTop } from '@/shared/ui';
 import { LayoutContent } from '@/widgets/layout-content/ui/LayoutContent';
 import { LayoutFooter } from '@/widgets/layout-footer';
 import { LayoutHeader } from '@/widgets/layout-header';
@@ -7,15 +8,18 @@ import React from 'react';
 
 export const MainLayout = () => {
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <LayoutHeader />
-      <Layout>
-        <LayoutSider />
+    <>
+      <ScrollToTop />
+      <Layout style={{ minHeight: '100vh' }}>
+        <LayoutHeader />
         <Layout>
-          <LayoutContent />
-          <LayoutFooter />
+          <LayoutSider />
+          <Layout>
+            <LayoutContent />
+            <LayoutFooter />
+          </Layout>
         </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };

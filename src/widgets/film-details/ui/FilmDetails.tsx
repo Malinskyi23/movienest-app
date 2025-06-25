@@ -1,5 +1,8 @@
 import { FilmImage } from '@/entitry/film';
 import { FilmCard } from '@/features/film-card';
+import { FilmDesc } from '@/features/film/FilmDesc';
+import { SequelsAndPrequelsList } from '@/features/film/SequelsAndPrequelsList';
+import { StaffDesc } from '@/features/staff/StaffDesc';
 import {
   useGetFilmByIdQuery,
   useGetSequelsAndPrequelsQuery,
@@ -34,6 +37,7 @@ export const FilmDetails = () => {
   const sequelsAndPrequelsResult = useGetSequelsAndPrequelsQuery(filmId, {
     skip: !id || isNaN(filmId),
   });
+
   const staffResult = useGetStaffQuery(
     { filmId },
     {
@@ -102,7 +106,8 @@ export const FilmDetails = () => {
           <Col span={16}>
             <Row gutter={[16, 16]}>
               <Col span={12}>
-                <Descriptions
+                <FilmDesc item={filmResult.data} />
+                {/* <Descriptions
                   bordered
                   items={[
                     {
@@ -135,40 +140,12 @@ export const FilmDetails = () => {
                         </Space>
                       ),
                     },
-                    {
-                      key: '4',
-                      span: 3,
-                      label: 'Directors',
-                      children: staffResult.data
-                        .filter(datum => datum.professionText === 'Режиссеры')
-                        .slice(0, 10)
-                        .map(member => (
-                          <Space key={member.nameRu}>{member.nameRu}</Space>
-                        )),
-                    },
+
                     {
                       key: '5',
                       span: 3,
                       label: 'Duration',
                       children: `${filmResult.data.filmLength} min`,
-                    },
-                  ]}
-                />
-              </Col>
-              <Col span={12}>
-                <Descriptions
-                  bordered
-                  items={[
-                    {
-                      key: '1',
-                      span: 3,
-                      label: 'Starring',
-                      children: staffResult.data
-                        .filter(datum => datum.professionText === 'Актеры')
-                        .slice(0, 10)
-                        .map((member, idx) => (
-                          <Space key={idx}>{member.nameRu}</Space>
-                        )),
                     },
                     {
                       key: '2',
@@ -187,22 +164,10 @@ export const FilmDetails = () => {
                       ),
                     },
                   ]}
-                />
+                /> */}
               </Col>
-              <Col span={24}>
-                <Descriptions
-                  bordered
-                  items={[
-                    {
-                      key: '1',
-                      span: 3,
-                      label: 'Description',
-                      children: filmResult.data.description
-                        ? filmResult.data.description
-                        : 'No description',
-                    },
-                  ]}
-                />
+              <Col span={12}>
+                <StaffDesc id={id} />
               </Col>
             </Row>
           </Col>
@@ -212,22 +177,7 @@ export const FilmDetails = () => {
           Watch online
         </Typography.Title>
         <video></video>
-        <Typography.Title level={4} style={{ margin: 0 }}>
-          Sequels and Prequels
-        </Typography.Title>
-        <Space wrap align="center">
-          {sequelsAndPrequelsResult.data?.map(film => (
-            <Link key={film.kinopoiskId} to={`/films/${film.kinopoiskId}`}>
-              <Card
-                hoverable
-                variant={'borderless'}
-                styles={{ body: { padding: 0 } }}
-              >
-                <FilmImage src={film.posterUrl} />
-              </Card>
-            </Link>
-          ))}
-        </Space>
+        <SequelsAndPrequelsList id={id} />
       </Flex>
     );
   }

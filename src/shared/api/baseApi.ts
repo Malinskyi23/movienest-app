@@ -23,7 +23,7 @@ export interface FilmItem {
   posterUrlPreview: string;
 }
 
-export interface FilmDetailsResponse {
+export type FilmDetails = {
   kinopoiskId: number;
   kinopoiskHDId?: string;
   imdbId?: string;
@@ -69,7 +69,9 @@ export interface FilmDetailsResponse {
   serial?: boolean;
   shortFilm?: boolean;
   completed?: boolean;
-}
+};
+
+export type FilmDetailsResponse = FilmDetails;
 
 export type SequelOrPrequel = {
   filmId: number;
