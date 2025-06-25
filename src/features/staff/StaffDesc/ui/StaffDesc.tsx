@@ -48,14 +48,16 @@ export const StaffDesc: React.FC<Props> = ({ id }) => {
             span: 3,
             label: 'Directors',
             children: (
-              <div>
+              <Space wrap>
                 {result.data
                   .filter(datum => datum.professionText === 'Режиссеры')
                   .slice(0, 10)
                   .map(member => (
-                    <Space key={member.nameRu}>{member.nameRu}</Space>
+                    <React.Fragment key={member.nameRu}>
+                      {member.nameRu}
+                    </React.Fragment>
                   ))}
-              </div>
+              </Space>
             ),
           },
           {
@@ -63,16 +65,16 @@ export const StaffDesc: React.FC<Props> = ({ id }) => {
             span: 3,
             label: 'Starring',
             children: (
-              <div>
+              <Space wrap>
                 {result.data
                   .filter(datum => datum.professionText === 'Актеры')
                   .slice(0, 10)
                   .map(member => (
-                    <Space key={member.nameRu} direction="horizontal">
+                    <React.Fragment key={member.nameRu}>
                       {member.nameRu}
-                    </Space>
+                    </React.Fragment>
                   ))}
-              </div>
+              </Space>
             ),
           },
         ]}

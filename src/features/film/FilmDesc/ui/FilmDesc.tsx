@@ -23,20 +23,24 @@ export const FilmDesc: React.FC<Props> = ({ item }) => {
           span: 3,
           label: 'Country',
           children: (
-            <div>
+            <Space wrap>
               {item.countries.map(({ country }) => (
-                <Space key={country}>{country}</Space>
+                <React.Fragment key={country}>{country}</React.Fragment>
               ))}
-            </div>
+            </Space>
           ),
         },
         {
           key: '3',
           span: 3,
           label: 'Genre',
-          children: item.genres.map(({ genre }) => (
-            <Space key={genre}>{genre}</Space>
-          )),
+          children: (
+            <Space wrap>
+              {item.genres.map(({ genre }) => (
+                <React.Fragment key={genre}>{genre}</React.Fragment>
+              ))}
+            </Space>
+          ),
         },
 
         {

@@ -1,20 +1,13 @@
-import { FilmImage } from '@/entitry/film';
-import { FilmCard } from '@/features/film-card';
 import { FilmDesc } from '@/features/film/FilmDesc';
 import { SequelsAndPrequelsList } from '@/features/film/SequelsAndPrequelsList';
 import { StaffDesc } from '@/features/staff/StaffDesc';
-import {
-  useGetFilmByIdQuery,
-  useGetSequelsAndPrequelsQuery,
-  useGetStaffQuery,
-} from '@/shared/api/baseApi';
-import { ArrowLeftOutlined, ExportOutlined } from '@ant-design/icons';
+import { VideoPlayer } from '@/features/video-player';
+import { useGetFilmByIdQuery } from '@/shared/api/baseApi';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import {
   Alert,
   Button,
-  Card,
   Col,
-  Descriptions,
   Flex,
   Image,
   Row,
@@ -23,7 +16,7 @@ import {
   Typography,
 } from 'antd';
 import React from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const FilmDetails = () => {
   const navigate = useNavigate();
@@ -31,38 +24,13 @@ export const FilmDetails = () => {
   const { id } = useParams();
   const filmId = Number(id);
 
-  const filmResult = useGetFilmByIdQuery(filmId, {
+  const result = useGetFilmByIdQuery(filmId, {
     skip: !id || isNaN(filmId),
   });
-  const sequelsAndPrequelsResult = useGetSequelsAndPrequelsQuery(filmId, {
-    skip: !id || isNaN(filmId),
-  });
-
-  const staffResult = useGetStaffQuery(
-    { filmId },
-    {
-      skip: !id || isNaN(filmId),
-    },
-  );
-
-  const isLoading =
-    filmResult.isLoading &&
-    // sequelsAndPrequelsResult.isLoading &&
-    staffResult.isLoading;
-
-  const isError =
-    filmResult.isError &&
-    // sequelsAndPrequelsResult.isError &&
-    staffResult.isError;
-
-  const isSuccess =
-    filmResult.isSuccess &&
-    // sequelsAndPrequelsResult.isSuccess &&
-    staffResult.isSuccess;
 
   let content: React.ReactNode;
 
-  if (isLoading) {
+  if (result.isLoading) {
     content = (
       <Spin tip="Loading content..." size="large">
         <div
@@ -74,7 +42,7 @@ export const FilmDetails = () => {
         />
       </Spin>
     );
-  } else if (isError) {
+  } else if (result.isError) {
     content = (
       <Alert
         message="Unexpected error"
@@ -82,10 +50,10 @@ export const FilmDetails = () => {
         type="error"
       />
     );
-  } else if (isSuccess) {
+  } else if (result.isSuccess) {
     content = (
-      <Flex vertical gap={16}>
-        <Space>
+      <Flex vertical gap={16} align="center">
+        <Space style={{ width: '100%' }}>
           <Button
             color="primary"
             variant="text"
@@ -93,78 +61,17 @@ export const FilmDetails = () => {
             onClick={() => navigate(-1)}
           />
           <Typography.Title level={4} style={{ margin: 0 }}>
-            {filmResult.data.nameRu}
+            {result.data.nameRu}
           </Typography.Title>
         </Space>
         <Row gutter={[16, 16]}>
           <Col span={8}>
-            <Image
-              src={filmResult.data.posterUrl}
-              alt={filmResult.data.nameRu}
-            />
+            <Image src={result.data.posterUrl} alt={result.data.nameRu} />
           </Col>
           <Col span={16}>
             <Row gutter={[16, 16]}>
               <Col span={12}>
-                <FilmDesc item={filmResult.data} />
-                {/* <Descriptions
-                  bordered
-                  items={[
-                    {
-                      key: '1',
-                      span: 3,
-                      label: 'Year',
-                      children: filmResult.data.year,
-                    },
-                    {
-                      key: '2',
-                      span: 3,
-                      label: 'Country',
-                      children: (
-                        <Space>
-                          {filmResult.data.countries.map(
-                            ({ country }) => `${country}`,
-                          )}
-                        </Space>
-                      ),
-                    },
-                    {
-                      key: '3',
-                      span: 3,
-                      label: 'Genre',
-                      children: (
-                        <Space>
-                          {filmResult.data.genres.map(
-                            ({ genre }) => `${genre}`,
-                          )}
-                        </Space>
-                      ),
-                    },
-
-                    {
-                      key: '5',
-                      span: 3,
-                      label: 'Duration',
-                      children: `${filmResult.data.filmLength} min`,
-                    },
-                    {
-                      key: '2',
-                      span: 3,
-                      label: 'Links',
-                      children: (
-                        <Button
-                          type="link"
-                          target="_blank"
-                          href={`https://www.imdb.com/title/${filmResult.data.imdbId}`}
-                          icon={<ExportOutlined />}
-                          iconPosition="end"
-                        >
-                          IMBD
-                        </Button>
-                      ),
-                    },
-                  ]}
-                /> */}
+                <FilmDesc item={result.data} />
               </Col>
               <Col span={12}>
                 <StaffDesc id={id} />
@@ -176,7 +83,7 @@ export const FilmDetails = () => {
         <Typography.Title level={5} style={{ margin: 0 }}>
           Watch online
         </Typography.Title>
-        <video></video>
+        <VideoPlayer kpId={filmId} />
         <SequelsAndPrequelsList id={id} />
       </Flex>
     );
