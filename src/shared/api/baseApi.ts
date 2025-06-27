@@ -123,9 +123,8 @@ export interface GetFilmsArgs {
   order?: string;
   type?: string;
   year?: number;
-  // yearFrom?: number;
-  // yearTo?: number;
-  page: number;
+  page?: number;
+  keyword?: string;
 }
 
 export interface GetStaffArgs {
@@ -161,7 +160,7 @@ export const baseApi = createApi({
         `/v2.2/films/collections?type=${type}&page=${page}`,
     }),
     getFilms: builder.query<FilmsResponse, GetFilmsArgs>({
-      query: ({ countryId, genreId, order, type, year, page }) => {
+      query: ({ countryId, genreId, order, type, year, page, keyword }) => {
         const params = new URLSearchParams();
 
         if (countryId !== undefined)
@@ -171,7 +170,8 @@ export const baseApi = createApi({
         if (type) params.append('type', type);
         if (year !== undefined) params.append('yearFrom', String(year));
         if (year !== undefined) params.append('yearTo', String(year));
-        params.append('page', String(page));
+        if (keyword) params.append('keyword', keyword);
+        if (page) params.append('page', String(page));
 
         return `/v2.2/films?${params.toString()}`;
       },

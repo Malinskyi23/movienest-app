@@ -7,6 +7,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import {
   Alert,
   Button,
+  Card,
   Col,
   Flex,
   Image,
@@ -52,40 +53,44 @@ export const FilmDetails = () => {
     );
   } else if (result.isSuccess) {
     content = (
-      <Flex vertical gap={16} align="center">
-        <Space style={{ width: '100%' }}>
-          <Button
-            color="primary"
-            variant="text"
-            icon={<ArrowLeftOutlined />}
-            onClick={() => navigate(-1)}
-          />
-          <Typography.Title level={4} style={{ margin: 0 }}>
-            {result.data.nameRu}
-          </Typography.Title>
-        </Space>
-        <Row gutter={[16, 16]}>
-          <Col span={8}>
-            <Image src={result.data.posterUrl} alt={result.data.nameRu} />
-          </Col>
-          <Col span={16}>
+      <Spin spinning={result.isFetching} tip="Fetching content...">
+        <Card>
+          <Flex vertical gap={16} align="center">
+            <Space style={{ width: '100%' }}>
+              <Button
+                color="primary"
+                variant="text"
+                icon={<ArrowLeftOutlined />}
+                onClick={() => navigate(-1)}
+              />
+              <Typography.Title level={4} style={{ margin: 0 }}>
+                {result.data.nameRu}
+              </Typography.Title>
+            </Space>
             <Row gutter={[16, 16]}>
-              <Col span={12}>
-                <FilmDesc item={result.data} />
+              <Col span={8}>
+                <Image src={result.data.posterUrl} alt={result.data.nameRu} />
               </Col>
-              <Col span={12}>
-                <StaffDesc id={id} />
+              <Col span={16}>
+                <Row gutter={[16, 16]}>
+                  <Col span={12}>
+                    <FilmDesc item={result.data} />
+                  </Col>
+                  <Col span={12}>
+                    <StaffDesc id={id} />
+                  </Col>
+                </Row>
               </Col>
             </Row>
-          </Col>
-        </Row>
 
-        <Typography.Title level={5} style={{ margin: 0 }}>
-          Watch online
-        </Typography.Title>
-        <VideoPlayer kpId={filmId} />
-        <SequelsAndPrequelsList id={id} />
-      </Flex>
+            <Typography.Title level={5} style={{ margin: 0 }}>
+              Watch online
+            </Typography.Title>
+            <VideoPlayer kpId={filmId} />
+            <SequelsAndPrequelsList id={id} />
+          </Flex>
+        </Card>
+      </Spin>
     );
   }
 
