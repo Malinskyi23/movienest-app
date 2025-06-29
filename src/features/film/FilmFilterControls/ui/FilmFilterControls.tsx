@@ -9,11 +9,9 @@ import {
 import type { CountryItem, GenreItem } from '@/shared/api/baseApi';
 import { useAppDispatch } from '@/shared/lib/hooks';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import { Button, Flex, Grid, Select } from 'antd';
+import { Button, Flex, Select } from 'antd';
 // import type { DefaultOptionType } from 'antd/es/select';
 import React from 'react';
-
-const { useBreakpoint } = Grid;
 
 type Props = {
   countryList: CountryItem[];
@@ -32,12 +30,9 @@ export const FilmFilterControls: React.FC<Props> = ({
   order,
   year,
 }) => {
-  const screens = useBreakpoint();
-  const isMobile = !screens.md;
   const dispatch = useAppDispatch();
 
   return (
-    // direction={isMobile ? 'vertical' : 'horizontal'}
     <Flex gap={8} justify="end">
       <Select<FilmOrder>
         placeholder="Sort by"

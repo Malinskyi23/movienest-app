@@ -1,6 +1,6 @@
 import { Navigation } from '@/features/navigation';
 import { Layout } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const LayoutSider = () => {
   const [collapsed, setCollapsed] = useState(false);

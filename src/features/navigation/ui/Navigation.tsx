@@ -33,7 +33,8 @@ export const Navigation = () => {
         theme="light"
         mode="inline"
         onClick={({ key }) => {
-          const type = FILMS_LIST.find(item => item.url === key)?.type;
+          // @ts-nocheck
+          const type: any = FILMS_LIST.find(item => item.url === key)?.type;
 
           if (type) {
             dispatch(resetFilters());
@@ -63,10 +64,9 @@ export const Navigation = () => {
         theme="light"
         mode="inline"
         onClick={({ key }) => {
-          const type = FILM_COLLECTIONS_LIST.find(
+          const type: any = FILM_COLLECTIONS_LIST.find(
             item => item.url === key,
           )?.type;
-
           if (type) {
             dispatch(collectionsSetType(type));
           }

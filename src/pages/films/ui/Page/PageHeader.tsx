@@ -1,6 +1,5 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Space, Typography } from 'antd';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const PageHeader = ({ title }: { title: string }) => {

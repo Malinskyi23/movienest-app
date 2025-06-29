@@ -1,16 +1,12 @@
 import { ErrorMessage } from '@/shared/ui';
 import AcroolCarousel, { AcroolSlideImage } from '@acrool/react-carousel';
 import { ArrowRightOutlined } from '@ant-design/icons';
-import { Flex, Grid, Typography } from 'antd';
+import { Flex, Typography } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useMediaContentLists } from '../../lib/hooks/useMediaContentLists';
 
-const { useBreakpoint } = Grid;
-
 export const CarouselMediaList = () => {
-  const screens = useBreakpoint();
-  const isMobile = !screens.md;
   const navigate = useNavigate();
   const {
     topPopularMoviesResponse,

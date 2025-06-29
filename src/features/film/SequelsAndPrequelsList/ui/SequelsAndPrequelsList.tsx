@@ -1,6 +1,6 @@
 import { useGetSequelsAndPrequelsQuery } from '@/shared/api/baseApi';
 import { PosterImage } from '@/shared/ui';
-import { Alert, Avatar, Card, List, Spin, Typography } from 'antd';
+import { Alert, Card, List, Spin } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 

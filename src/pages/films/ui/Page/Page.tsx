@@ -1,7 +1,6 @@
 import { FILMS_LIST } from '@/shared/consts/constants';
 import { FilmsList } from '@/widgets/films-list';
 import { Flex } from 'antd';
-import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { PageHeader } from './PageHeader';

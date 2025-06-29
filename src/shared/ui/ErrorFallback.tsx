@@ -1,6 +1,6 @@
 import { Alert } from 'antd';
-import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ErrorFallback = ({ error }: { error: any }) => {
   if ('status' in error && 'error' in error) {
     // FetchBaseQueryError

@@ -1,5 +1,4 @@
 import { Layout, Typography } from 'antd';
-import React from 'react';
 
 export const LayoutFooter = () => {
   return (

@@ -5,7 +5,6 @@ import { MainPage } from '@/pages/main';
 import { StaffListPage } from '@/pages/staff-list/ui/Page';
 import { StaffMemberDetailsPage } from '@/pages/staff-member-details/ui/Page';
 import { FILM_COLLECTIONS_LIST, FILMS_LIST } from '@/shared/consts/constants';
-import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { MainLayout } from './layouts/MainLayout';
