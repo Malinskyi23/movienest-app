@@ -21,6 +21,6 @@ export default defineConfig([
   configPrettier,
   {
     plugins: { prettier: pluginPrettier },
-    rules: { 'prettier/prettier': 'error' },
+    rules: { 'prettier/prettier': 'error', 'react/react-in-jsx-scope': 'off' },
   },
 ]);

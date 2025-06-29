@@ -53,6 +53,13 @@ export const useMediaContentLists = () => {
     tvSeriesResponse.isFetching ||
     cartoonsResponse.isFetching;
 
+  const isLoading =
+    topPopularMoviesResponse.isLoading ||
+    top250MoviesResponse.isLoading ||
+    filmResponse.isLoading ||
+    tvSeriesResponse.isLoading ||
+    cartoonsResponse.isLoading;
+
   const error =
     topPopularMoviesResponse.error ??
     top250MoviesResponse.error ??
@@ -67,6 +74,7 @@ export const useMediaContentLists = () => {
     tvSeriesResponse,
     cartoonsResponse,
     isFetching,
+    isLoading,
     error,
   };
 };

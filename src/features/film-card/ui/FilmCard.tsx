@@ -1,26 +1,30 @@
-import { FilmImage } from '@/entitry/film';
-import { Badge, Card, Flex, Space, Typography } from 'antd';
-import React from 'react';
+import { PosterImage } from '@/shared/ui';
+import { StarFilled } from '@ant-design/icons';
+import { Badge, Card, Space, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-
-import styles from './FilmCard.module.css';
 
 export const FilmCard = ({ item }: { item: any }) => {
   return (
     <Link to={`/films/${item.kinopoiskId}`}>
-      <Card hoverable>
-        <Flex vertical gap={8} align="center">
-          <Badge.Ribbon text={item.type ? item.type : 'no'}>
-            <FilmImage src={item.posterUrlPreview} />
-          </Badge.Ribbon>
-
-          <Space direction="vertical" style={{ width: '100%' }}>
-            <Typography.Text ellipsis>
-              <Link to={`/films/${item.kinopoiskId}`}>
-                {item.nameEn ? item.nameEn : item.nameRu}
-              </Link>
-            </Typography.Text>
-            {item.year &&
+      <Badge.Ribbon
+        text={
+          item.ratingKinopoisk ? (
+            <>
+              <StarFilled style={{ color: 'yellow' }} /> {item.ratingKinopoisk}{' '}
+              / 10
+            </>
+          ) : (
+            'N/A'
+          )
+        }
+      >
+        <Card cover={<PosterImage src={item.posterUrl} />} hoverable>
+          <Card.Meta
+            title={
+              item.nameRu || item.nameEn || item.nameOriginal || 'Untitled'
+            }
+            description={
+              item.year &&
               item.countries.length !== 0 &&
               item.genres.length !== 0 && (
                 <Space>
@@ -34,10 +38,11 @@ export const FilmCard = ({ item }: { item: any }) => {
                     {item.genres[0].genre}
                   </Typography.Text>
                 </Space>
-              )}
-          </Space>
-        </Flex>
-      </Card>
+              )
+            }
+          />
+        </Card>
+      </Badge.Ribbon>
     </Link>
   );
 };

@@ -16,15 +16,7 @@ import {
 import { FILMS_LIST } from '@/shared/consts/constants';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { ErrorFallback } from '@/shared/ui';
-import {
-  Card,
-  Col,
-  Flex,
-  Pagination,
-  Row,
-  Spin,
-  type PaginationProps,
-} from 'antd';
+import { Col, Flex, Pagination, Row, Spin, type PaginationProps } from 'antd';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -105,18 +97,14 @@ export const FilmsList = () => {
 
     content = (
       <Flex vertical gap={16}>
-        <Spin spinning={isFetching} tip="Fetching content...">
-          <Card>
-            <FilmFilterControls
-              countryList={genresAndCountriesResult.countries}
-              genreList={genresAndCountriesResult.genres}
-              genreId={genreId}
-              countryId={countryId}
-              year={year}
-              order={order}
-            />
-          </Card>
-        </Spin>
+        <FilmFilterControls
+          countryList={genresAndCountriesResult.countries}
+          genreList={genresAndCountriesResult.genres}
+          genreId={genreId}
+          countryId={countryId}
+          year={year}
+          order={order}
+        />
 
         <Spin spinning={isFetching} tip="Fetching content...">
           <Row gutter={[16, 16]}>{renderedFilms}</Row>

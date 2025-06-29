@@ -1,10 +1,9 @@
 import { Layout, theme } from 'antd';
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 export const LayoutContent = () => {
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   const styles = {
@@ -13,7 +12,7 @@ export const LayoutContent = () => {
     minHeight: 280,
     maxWidth: 1200,
     width: '100%',
-    // background: colorBgContainer,
+    background: colorBgContainer,
     // borderRadius: borderRadiusLG,
   };
 

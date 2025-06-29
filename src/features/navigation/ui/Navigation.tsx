@@ -29,6 +29,37 @@ export const Navigation = () => {
   return (
     <>
       <Menu
+        title="Misha"
+        theme="light"
+        mode="inline"
+        onClick={({ key }) => {
+          const type = FILMS_LIST.find(item => item.url === key)?.type;
+
+          if (type) {
+            dispatch(resetFilters());
+            dispatch(filmsSetType(type));
+          }
+
+          navigate(key);
+        }}
+        items={[
+          {
+            key: 'videos',
+            label: 'Videos',
+            type: 'group',
+            children: FILMS_LIST.map(item => ({
+              key: item.url,
+              label: item.title,
+              icon: (
+                <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />
+              ),
+            })),
+          },
+        ]}
+      />
+      <Divider />
+      <Menu
+        title="Collections and Tops"
         theme="light"
         mode="inline"
         onClick={({ key }) => {
@@ -42,31 +73,20 @@ export const Navigation = () => {
 
           navigate(key);
         }}
-        items={FILM_COLLECTIONS_LIST.map(item => ({
-          key: item.url,
-          label: item.title,
-          icon: <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />,
-        }))}
-      />
-      <Divider />
-      <Menu
-        theme="light"
-        mode="inline"
-        onClick={({ key }) => {
-          const type = FILMS_LIST.find(item => item.url === key)?.type;
-
-          if (type) {
-            dispatch(resetFilters());
-            dispatch(filmsSetType(type));
-          }
-
-          navigate(key);
-        }}
-        items={FILMS_LIST.map(item => ({
-          key: item.url,
-          label: item.title,
-          icon: <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />,
-        }))}
+        items={[
+          {
+            key: 'CAT',
+            label: 'Tops and Collections',
+            type: 'group',
+            children: FILM_COLLECTIONS_LIST.map(item => ({
+              key: item.url,
+              label: item.title,
+              icon: (
+                <Icon iconName={item.icon as keyof typeof ICON_COMPONENTS} />
+              ),
+            })),
+          },
+        ]}
       />
     </>
   );

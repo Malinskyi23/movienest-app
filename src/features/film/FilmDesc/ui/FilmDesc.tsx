@@ -10,7 +10,7 @@ type Props = {
 export const FilmDesc: React.FC<Props> = ({ item }) => {
   const content: React.ReactNode = (
     <Descriptions
-      // bordered
+      bordered
       items={[
         {
           key: '1',
@@ -65,12 +65,12 @@ export const FilmDesc: React.FC<Props> = ({ item }) => {
             </Button>
           ),
         },
-        {
-          key: '1',
-          span: 3,
-          label: 'Description',
-          children: item.description ? item.description : 'No description',
-        },
+        // {
+        //   key: '1',
+        //   span: 3,
+        //   label: 'Description',
+        //   children: item.description ? item.description : 'No description',
+        // },
       ]}
     />
   );

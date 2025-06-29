@@ -40,7 +40,7 @@ export const StaffDesc: React.FC<Props> = ({ id }) => {
   } else if (result.isSuccess) {
     content = (
       <Descriptions
-        // bordered
+        bordered
         // layout="vertical"
         items={[
           {

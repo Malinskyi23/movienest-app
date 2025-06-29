@@ -9,7 +9,7 @@ import {
 import type { CountryItem, GenreItem } from '@/shared/api/baseApi';
 import { useAppDispatch } from '@/shared/lib/hooks';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import { Button, Grid, Select, Space } from 'antd';
+import { Button, Flex, Grid, Select } from 'antd';
 // import type { DefaultOptionType } from 'antd/es/select';
 import React from 'react';
 
@@ -37,7 +37,8 @@ export const FilmFilterControls: React.FC<Props> = ({
   const dispatch = useAppDispatch();
 
   return (
-    <Space direction={isMobile ? 'vertical' : 'horizontal'}>
+    // direction={isMobile ? 'vertical' : 'horizontal'}
+    <Flex gap={8} justify="end">
       <Select<FilmOrder>
         placeholder="Sort by"
         value={order}
@@ -91,12 +92,13 @@ export const FilmFilterControls: React.FC<Props> = ({
       />
       <Button
         icon={<CloseCircleOutlined />}
+        type="link"
         onClick={() => {
           dispatch(resetFilters());
         }}
       >
-        Reset
+        Reset filters
       </Button>
-    </Space>
+    </Flex>
   );
 };

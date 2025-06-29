@@ -4,7 +4,6 @@ import { LayoutFooter } from '@/widgets/layout-footer';
 import { LayoutHeader } from '@/widgets/layout-header';
 import { LayoutSider } from '@/widgets/layout-sider';
 import { Layout } from 'antd';
-import React from 'react';
 
 export const MainLayout = () => {
   return (

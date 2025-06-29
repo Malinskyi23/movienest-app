@@ -1,5 +1,6 @@
 import { useGetSequelsAndPrequelsQuery } from '@/shared/api/baseApi';
-import { Alert, Avatar, List, Spin, Typography } from 'antd';
+import { PosterImage } from '@/shared/ui';
+import { Alert, Avatar, Card, List, Spin, Typography } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -38,9 +39,6 @@ export const SequelsAndPrequelsList: React.FC<Props> = ({ id }) => {
   } else if (result.isSuccess) {
     content = (
       <>
-        <Typography.Title level={4} style={{ margin: 0 }}>
-          Sequels and Prequels
-        </Typography.Title>
         <List
           itemLayout="horizontal"
           dataSource={result.data.map(datum => ({
@@ -54,11 +52,20 @@ export const SequelsAndPrequelsList: React.FC<Props> = ({ id }) => {
               <List.Item.Meta
                 avatar={
                   <Link to={`/films/${item.id}`}>
-                    <Avatar src={item.url} shape="square" size={128} />
+                    <Card
+                      hoverable
+                      variant="borderless"
+                      styles={{ body: { padding: 0 } }}
+                    >
+                      <PosterImage src={item.url} height={128} />
+                    </Card>
                   </Link>
                 }
                 title={<Link to={`/films/${item.id}`}>{item.title}</Link>}
-                description={item.type}
+                description={
+                  item.type.charAt(0).toUpperCase() +
+                  item.type.slice(1).toLowerCase()
+                }
               />
             </List.Item>
           )}

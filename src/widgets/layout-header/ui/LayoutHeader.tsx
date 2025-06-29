@@ -1,6 +1,7 @@
 import { Search } from '@/features/search';
+import { LinuxOutlined } from '@ant-design/icons';
 import { Flex, Layout, Typography } from 'antd';
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const LayoutHeader = () => {
   const styles = {
@@ -12,9 +13,12 @@ export const LayoutHeader = () => {
   return (
     <Layout.Header style={styles}>
       <Flex justify="space-between" style={{ width: '100%' }}>
-        <Typography.Title level={3} style={{ color: '#ffffff', margin: 0 }}>
-          movienest
-        </Typography.Title>
+        <Link to="/">
+          <Typography.Title level={3} style={{ color: '#ffffff', margin: 0 }}>
+            <LinuxOutlined />
+            movienest
+          </Typography.Title>
+        </Link>
         <Search />
       </Flex>
     </Layout.Header>

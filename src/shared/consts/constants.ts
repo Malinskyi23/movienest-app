@@ -81,7 +81,7 @@ export const FILMS_LIST = [
     type: 'FILM',
   },
   {
-    title: 'Series',
+    title: 'TV Series',
     icon: 'BarsOutlined',
     url: '/tv-series',
     type: 'TV_SERIES',

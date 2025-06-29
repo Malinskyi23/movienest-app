@@ -56,7 +56,7 @@ export const Search = () => {
   return (
     <AutoComplete
       placeholder="Search for movies and TV series"
-      style={{ width: '50%' }}
+      style={{ width: 400 }}
       size="large"
       value={value}
       options={

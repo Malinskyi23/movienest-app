@@ -1,7 +1,7 @@
 import { ErrorMessage } from '@/shared/ui';
 import AcroolCarousel, { AcroolSlideImage } from '@acrool/react-carousel';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Flex, Grid, Typography } from 'antd';
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useMediaContentLists } from '../../lib/hooks/useMediaContentLists';
@@ -35,10 +35,10 @@ export const CarouselMediaList = () => {
         key={row.id}
         imageUrl={row.posterUrlPreview}
         onClick={() => navigate(`/films/${row.kinopoiskId}`)}
-        style={{
-          height: isMobile ? '520px' : '352px',
-          width: isMobile ? '100%' : '230px',
-        }}
+        // style={{
+        //   height: isMobile ? '520px' : '352px',
+        //   width: '100%',
+        // }}
       />
     ));
 
@@ -46,38 +46,39 @@ export const CarouselMediaList = () => {
     {
       title: 'Top 250 movies',
       url: '/films/collections/top-250-movies',
-      data: serialize(top250MoviesResponse.data.items),
+      data: serialize(top250MoviesResponse.data?.items),
     },
     {
       title: 'Top popular movies',
       url: '/films/collections/top-popular-movies',
-      data: serialize(topPopularMoviesResponse.data.items),
+      data: serialize(topPopularMoviesResponse.data?.items),
     },
     {
       title: 'Films',
       url: '/films',
-      data: serialize(filmResponse.data.items),
+      data: serialize(filmResponse.data?.items),
     },
     {
       title: 'Series',
       url: '/tv-series',
-      data: serialize(tvSeriesResponse.data.items),
+      data: serialize(tvSeriesResponse.data?.items),
     },
     {
       title: 'Cartoons',
       url: '/cartoons',
-      data: serialize(cartoonsResponse.data.items),
+      data: serialize(cartoonsResponse.data?.items),
     },
   ];
 
   return (
-    <Flex vertical gap={16}>
-      <Typography.Title style={{ margin: 0 }}>
-        Top Movies, Series & Cartoons
-      </Typography.Title>
+    <>
       {carouselItems.map(carouselItem => (
         <Flex key={carouselItem.title} vertical gap={16}>
-          <Link to={carouselItem.url}> {carouselItem.title} </Link>
+          <Typography.Title level={4}>
+            <Link to={carouselItem.url}>
+              {carouselItem.title} <ArrowRightOutlined />
+            </Link>
+          </Typography.Title>
 
           <AcroolCarousel
             // height={2 / 3}
@@ -96,6 +97,6 @@ export const CarouselMediaList = () => {
           />
         </Flex>
       ))}
-    </Flex>
+    </>
   );
 };
